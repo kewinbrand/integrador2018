@@ -6,7 +6,11 @@
 package integrador;
 
 import dijkstra.Dijkstra;
+import dijkstra.ElementoAdjacencia;
 import dijkstra.Grafo;
+import dijkstra.Vertice;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -25,9 +29,23 @@ public class Integrador {
             System.out.println(grafo.numeroArestas());
             System.out.println(grafo.numeroVertices());
             
+            List<Vertice> lista = new ArrayList<>();
+            
             Dijkstra dijkstra = new Dijkstra(grafo, grafo.getListaAdjacencia().get(0).getVerticePai());
             
             dijkstra.Executar();
+            
+            for (ElementoAdjacencia elemento : grafo.getListaAdjacencia()) {
+                for(Vertice vertice: elemento.getVerticesFilhos()){
+                    if(!lista.contains(vertice)){
+                        lista.add(vertice);
+                        if(vertice.getPai() != null){
+                        System.out.println("Vertice " + vertice.getLabel() + " pai " + vertice.getPai().getLabel() + " distância  " + vertice.getDistancia());
+                    }
+                    }
+                }
+                
+            }
             
         } catch (Exception ex) {
             Logger.getLogger(Integrador.class.getName()).log(Level.SEVERE, null, ex);

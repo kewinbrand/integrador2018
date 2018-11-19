@@ -19,59 +19,83 @@ public class DijkstraSetup {
     public static Grafo CriarGrafo(){
         ListaAdjacencia listaAdjacencia = new ListaAdjacencia();
         
-        Vertice verticeX = new Vertice();
-        verticeX.setLabel("X");
+        Vertice verticeCuritiba = new Vertice();
+        verticeCuritiba.setLabel("CURITIBA");
         
-        Vertice verticeB = new Vertice();
-        verticeB.setLabel("B");
+        Vertice verticeAraucaria = new Vertice();
+        verticeAraucaria.setLabel("ARAUCARIA");
         
-        Vertice verticeD = new Vertice();
-        verticeD.setLabel("D");
+        Vertice verticeSaoJose = new Vertice();
+        verticeSaoJose.setLabel("SÃO JOSÉ DOS PINHAIS");
         
-        Vertice verticeE = new Vertice();
-        verticeE.setLabel("E");
+        Vertice verticeTijucas = new Vertice();
+        verticeTijucas.setLabel("TIJUCAS DO SUL");
         
-        Vertice verticeC = new Vertice();
-        verticeC.setLabel("C");
+        Vertice verticeQuitandinha = new Vertice();
+        verticeQuitandinha.setLabel("QUITANDINHA");
         
-        Vertice verticeA = new Vertice();
-        verticeA.setLabel("A");
+        Vertice verticeLapa = new Vertice();
+        verticeLapa.setLabel("LAPA");
         
-        ElementoAdjacencia elemento = new ElementoAdjacencia(verticeX);
-        elemento.AdicionarVerticeFilho(verticeB, 8);
-        elemento.AdicionarVerticeFilho(verticeE, 10);
-        elemento.AdicionarVerticeFilho(verticeA, 3);
-        elemento.AdicionarVerticeFilho(verticeC, 4);
-        listaAdjacencia.AdicionarElementoAdjacencia(elemento);
+        Vertice verticeItaperucu = new Vertice();
+        verticeItaperucu.setLabel("ITAPERUCU");
         
-        elemento = new ElementoAdjacencia(verticeB);
-        elemento.AdicionarVerticeFilho(verticeX, 8);
-        elemento.AdicionarVerticeFilho(verticeD, 2);
-        listaAdjacencia.AdicionarElementoAdjacencia(elemento);
+        Vertice verticeBocaiuva = new Vertice();
+        verticeBocaiuva.setLabel("BOCAIÚVA DO SUL");
         
-        elemento = new ElementoAdjacencia(verticeD);
-        elemento.AdicionarVerticeFilho(verticeB, 2);
-        elemento.AdicionarVerticeFilho(verticeC, 1);
-        elemento.AdicionarVerticeFilho(verticeE, 1);
-        listaAdjacencia.AdicionarElementoAdjacencia(elemento);
+        Vertice verticeAgudos = new Vertice();
+        verticeAgudos.setLabel("AGUDOS DO SUL");
         
-        elemento = new ElementoAdjacencia(verticeE);
-        elemento.AdicionarVerticeFilho(verticeD, 1);
-        elemento.AdicionarVerticeFilho(verticeC, 3);
-        elemento.AdicionarVerticeFilho(verticeX, 10);
-        listaAdjacencia.AdicionarElementoAdjacencia(elemento);
+        ElementoAdjacencia elemento = new ElementoAdjacencia(verticeCuritiba);
+        elemento.AdicionarVerticeFilho(verticeAraucaria, 23);
+        elemento.AdicionarVerticeFilho(verticeAgudos, 65);
+        elemento.AdicionarVerticeFilho(verticeTijucas, 53);
+        listaAdjacencia.add(elemento);
         
-        elemento = new ElementoAdjacencia(verticeC);
-        elemento.AdicionarVerticeFilho(verticeE, 3);
-        elemento.AdicionarVerticeFilho(verticeD, 1);
-        elemento.AdicionarVerticeFilho(verticeX, 4);
-        elemento.AdicionarVerticeFilho(verticeA, 6);
-        listaAdjacencia.AdicionarElementoAdjacencia(elemento);
+        elemento = new ElementoAdjacencia(verticeAraucaria);
+        elemento.AdicionarVerticeFilho(verticeCuritiba, 23);
+        elemento.AdicionarVerticeFilho(verticeSaoJose, 36);
+        elemento.AdicionarVerticeFilho(verticeItaperucu, 54);
+        listaAdjacencia.add(elemento);
         
-        elemento = new ElementoAdjacencia(verticeA);
-        elemento.AdicionarVerticeFilho(verticeX, 3);
-        elemento.AdicionarVerticeFilho(verticeC, 6);
-        listaAdjacencia.AdicionarElementoAdjacencia(elemento);
+        elemento = new ElementoAdjacencia(verticeSaoJose);
+        elemento.AdicionarVerticeFilho(verticeBocaiuva, 58);
+        elemento.AdicionarVerticeFilho(verticeAraucaria, 36);
+        elemento.AdicionarVerticeFilho(verticeTijucas, 29);
+        listaAdjacencia.add(elemento);
+        
+        elemento = new ElementoAdjacencia(verticeTijucas);
+        elemento.AdicionarVerticeFilho(verticeSaoJose, 29);
+        elemento.AdicionarVerticeFilho(verticeCuritiba, 53);
+        elemento.AdicionarVerticeFilho(verticeAgudos, 26);
+        listaAdjacencia.add(elemento);
+        
+        elemento = new ElementoAdjacencia(verticeAgudos);
+        elemento.AdicionarVerticeFilho(verticeCuritiba, 65);
+        elemento.AdicionarVerticeFilho(verticeTijucas, 26);
+        elemento.AdicionarVerticeFilho(verticeQuitandinha, 23);
+        listaAdjacencia.add(elemento);
+        
+        elemento = new ElementoAdjacencia(verticeQuitandinha);
+        elemento.AdicionarVerticeFilho(verticeAgudos, 23);
+        elemento.AdicionarVerticeFilho(verticeLapa, 42);
+        listaAdjacencia.add(elemento);
+        
+        elemento = new ElementoAdjacencia(verticeLapa);
+        elemento.AdicionarVerticeFilho(verticeQuitandinha, 42);
+        elemento.AdicionarVerticeFilho(verticeItaperucu, 80);
+        listaAdjacencia.add(elemento);
+        
+        elemento = new ElementoAdjacencia(verticeItaperucu);
+        elemento.AdicionarVerticeFilho(verticeLapa, 80);
+        elemento.AdicionarVerticeFilho(verticeAraucaria, 54);
+        elemento.AdicionarVerticeFilho(verticeBocaiuva, 53);
+        listaAdjacencia.add(elemento);
+        
+        elemento = new ElementoAdjacencia(verticeBocaiuva);
+        elemento.AdicionarVerticeFilho(verticeItaperucu, 53);
+        elemento.AdicionarVerticeFilho(verticeSaoJose, 58);
+        listaAdjacencia.add(elemento);
         
         Grafo grafo = new Grafo(listaAdjacencia);
         return grafo;
